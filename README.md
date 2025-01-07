@@ -1,2 +1,1 @@
-# yumbox-practice
-The frontend product for practice
+Practice YumBox-project
