@@ -1,0 +1,45 @@
+.button {
+  position: absolute;
+  right: 20px;
+  bottom: 60px;
+  display: flex;
+  border: 1px solid #fff;
+  border-radius: 21px;
+  padding: 5px;
+  gap: 11px;
+  width: fit-content;
+  align-items: center;
+  padding-right: 17px;
+  transition: background-color 250ms ease-in;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d71515;
+  }
+
+  .counter {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d71515;
+    color: #ebf4e1;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 50%;
+  }
+  .price {
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .button {
+    position: unset;
+    right: unset;
+    left: unset;
+  }
+}
