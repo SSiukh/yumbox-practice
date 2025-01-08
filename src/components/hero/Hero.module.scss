@@ -1,0 +1,53 @@
+.buttons {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .pagination {
+    display: flex;
+    gap: 8px;
+    .paginationItem {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #ffffff40;
+      transition: background-color 250ms ease-in;
+    }
+    .paginationActiveItem {
+      background-color: #ffffff;
+    }
+  }
+  .nextIconButton {
+    transform: rotate(180deg);
+    transition: color 250ms ease-in;
+  }
+  .prevIconButton {
+    transition: color 250ms ease-in;
+  }
+  .disabled {
+    color: #ffffff40;
+    cursor: not-allowed;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .buttons {
+    justify-content: center;
+    .prevButton {
+      position: absolute;
+      left: 9px;
+      bottom: 265px;
+      z-index: 3;
+      cursor: pointer;
+    }
+    .nextButton {
+      position: absolute;
+      right: 9px;
+      bottom: 265px;
+      z-index: 3;
+      cursor: pointer;
+    }
+  }
+}

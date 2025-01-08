@@ -2,11 +2,19 @@
   --font-family: 'Montserrat', sans-serif;
   --second-family: 'Nunito', sans-serif;
 }
+
 * {
   box-sizing: border-box;
+  font-family: var(--font-family);
 }
+
 body {
   background-color: #000000;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
 }
 
 h1,
@@ -35,6 +43,7 @@ img {
   width: 375px;
   padding: 0 20px;
   margin: 0 auto;
+  position: relative;
 }
 
 @media screen and (min-width: 1440px) {
