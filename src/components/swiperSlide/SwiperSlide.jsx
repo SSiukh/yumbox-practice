@@ -21,8 +21,8 @@ const swiperSlide = ({ id, price }) => {
         <img src={desktopBanner} alt="project image" />
       </picture>
       <div className={styles.info}>
-        <span className={styles.infoSet}>СЕТ 21 {id}</span>
-        <span className={styles.infoPrice}>{price}799 ГРН</span>
+        <span className={styles.infoSet}>СЕТ {id}</span>
+        <span className={styles.infoPrice}>{price} ГРН</span>
       </div>
     </div>
   );

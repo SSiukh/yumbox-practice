@@ -1,0 +1,53 @@
+// 1. Змінні
+$primary-color: #3498db;
+$font-size: 16px;
+
+// 2. Вкладеність
+.button {
+  background-color: $primary-color;
+  color: white;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// 3. Міксини
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+.box {
+  @include border-radius(10px);
+}
+
+// 4. Функції
+@function calculate-rem($px) {
+  @return $px / 16px * 1rem;
+}
+
+.element {
+  font-size: calculate-rem(18px);
+}
+
+// 5. Імпорти
+@import 'variables';
+@import 'mixins';
+
+// 6. Спадковість
+.button {
+  padding: 10px 20px;
+  background-color: $primary-color;
+}
+
+.primary-button {
+  @extend .button;
+  color: white;
+}
+
+// 7. Модульність
+// Файли можуть бути розбиті на частини, наприклад:
+// _variables.scss, _mixins.scss і т.д.
+
+// 8. Перевизначення стилів
+// Легко налаштовувати стилі для різних тем

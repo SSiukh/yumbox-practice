@@ -43,12 +43,13 @@ img {
   width: 375px;
   padding: 0 20px;
   margin: 0 auto;
-  position: relative;
+  padding-bottom: 116px;
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
     padding: 0 82px;
+    padding-bottom: 131px;
   }
 }

@@ -4,8 +4,9 @@ import 'swiper/css/bundle';
 import styles from './Hero.module.scss';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import SwiperSlide from '../swiperSlide/SwiperSlide';
+import clsx from 'clsx';
 
-const Hero = () => {
+const Hero = ({ topItems }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -30,49 +31,46 @@ const Hero = () => {
   return (
     <div className="swiper">
       <div className="swiper-wrapper">
-        {/* array map */}
-        <div className="swiper-slide">
-          <SwiperSlide />
-        </div>
-        <div className="swiper-slide">
-          <SwiperSlide />
-        </div>
-        <div className="swiper-slide">
-          <SwiperSlide />
-        </div>
+        {topItems.map(item => {
+          return (
+            <div key={item.id} className="swiper-slide">
+              <SwiperSlide id={item.id} price={item.price} />
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.buttons}>
         <div className={`${styles.prevButton} button-prev`}>
           <IoArrowBackCircleOutline
-            className={`${styles.prevIconButton} ${
-              activeIndex === 0 && styles.disabled
-            }`}
+            className={clsx(styles.prevIconButton, {
+              [styles.disabled]: !activeIndex,
+            })}
             size={44}
           />
         </div>
         <div className={styles.pagination}>
           <span
-            className={`${styles.paginationItem} ${
-              activeIndex === 0 && styles.paginationActiveItem
-            }`}
+            className={clsx(styles.paginationItem, {
+              [styles.paginationActiveItem]: activeIndex === 0,
+            })}
           ></span>
           <span
-            className={`${styles.paginationItem} ${
-              activeIndex === 1 && styles.paginationActiveItem
-            }`}
+            className={clsx(styles.paginationItem, {
+              [styles.paginationActiveItem]: activeIndex === 1,
+            })}
           ></span>
           <span
-            className={`${styles.paginationItem} ${
-              activeIndex === 2 && styles.paginationActiveItem
-            }`}
+            className={clsx(styles.paginationItem, {
+              [styles.paginationActiveItem]: activeIndex === 2,
+            })}
           ></span>
         </div>
-        <div className={`${styles.nextButton} button-next`}>
+        <div className={clsx(styles.nextButton, 'button-next')}>
           <IoArrowBackCircleOutline
-            className={`${styles.nextIconButton} ${
-              activeIndex === 2 && styles.disabled
-            }`}
+            className={clsx(styles.nextIconButton, {
+              [styles.disabled]: activeIndex === 2,
+            })}
             size={44}
           />
         </div>

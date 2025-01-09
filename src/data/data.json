@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "price": 650,
+    "weight": 600,
+    "top": true
+  },
+  {
+    "id": 2,
+    "price": 980,
+    "weight": 900
+  },
+  {
+    "id": 3,
+    "price": 1260,
+    "weight": 1500,
+    "top": true
+  },
+  {
+    "id": 4,
+    "price": 890,
+    "weight": 800
+  },
+  {
+    "id": 5,
+    "price": 620,
+    "weight": 550
+  },
+  {
+    "id": 6,
+    "price": 2000,
+    "weight": 2500
+  },
+  {
+    "id": 7,
+    "price": 1180,
+    "weight": 2000,
+    "top": true
+  },
+  {
+    "id": 8,
+    "price": 750,
+    "weight": 700
+  }
+]
