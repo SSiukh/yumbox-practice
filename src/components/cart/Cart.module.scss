@@ -1,0 +1,141 @@
+.cartOverlay {
+  background-color: #000000;
+  display: none;
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+
+  .cartContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 375px;
+    padding-top: 100px;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    .cartTopContainer {
+      padding: 0 20px;
+      width: 100%;
+
+      .titleContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .close {
+          transition: color 250ms ease-in;
+          cursor: pointer;
+
+          &:hover {
+            color: #fcb852;
+          }
+        }
+        .title {
+          font-family: var(--second-family);
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 100%;
+          color: #fff;
+        }
+      }
+      .cardContainer {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  }
+
+  .bottomContent {
+    padding: 26px 20px;
+    width: 100%;
+    border-radius: 31px 31px 0 0;
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+
+    .bottomTitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .delivery {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 100%;
+        color: #fff;
+        font-family: var(--second-family);
+      }
+      .deliveryPrice {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 100%;
+        text-align: right;
+        color: #fff;
+        font-family: var(--second-family);
+      }
+    }
+
+    .button {
+      width: 100%;
+      background-color: #fcb852;
+      border-radius: 63px;
+      padding: 24px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 100%;
+      text-align: center;
+      color: #000;
+      font-family: var(--second-family);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 250ms ease-in, border-color 250ms ease-in,
+        color 250ms ease-in;
+
+      &:hover {
+        background-color: transparent;
+        border-color: #fcb852;
+        color: #fcb852;
+      }
+    }
+  }
+}
+
+.opened {
+  display: flex;
+}
+
+@media screen and (min-width: 1440px) {
+  .cartOverlay {
+    background-color: #fcb85211;
+    backdrop-filter: blur(10px);
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .cartContainer {
+      padding-top: 160px;
+      width: 469px;
+      margin: 0;
+      background-color: #000000;
+
+      .cartTopContainer {
+        padding: 0 30px;
+
+        .titleContainer {
+          .title {
+            font-size: 36px;
+          }
+        }
+      }
+    }
+  }
+}

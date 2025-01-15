@@ -1,7 +1,7 @@
 import styles from './ProductCard.module.scss';
 import mobileBox from '../../assets/mobile-box.jpg';
 import mobileBox2x from '../../assets/mobile-box-2x.jpg';
-import desktopBox from '../../assets/destop-box.jpg';
+import desktopBox from '../../assets/desktop-box.jpg';
 import desktopBox2x from '../../assets/desktop-box-2x.jpg';
 import { useState } from 'react';
 
@@ -12,11 +12,11 @@ const ProductCard = ({ id, price, weight }) => {
     <div className={styles.card}>
       <picture className={styles.image}>
         <source
-          media="(min-width: 1440)"
+          media="(min-width: 1440px)"
           srcSet={`${desktopBox} 1x, ${desktopBox2x} 2x`}
         />
         <source
-          media="(max-width: 1439)"
+          media="(max-width: 1439px)"
           srcSet={`${mobileBox} 1x, ${mobileBox2x} 2x`}
         />
         <img src={desktopBox} alt="product" />

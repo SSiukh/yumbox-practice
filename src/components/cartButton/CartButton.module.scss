@@ -38,10 +38,22 @@
   }
 }
 
+.ordinary {
+  position: unset;
+  right: unset;
+  left: unset;
+}
+.notVisible {
+  display: none;
+}
+
 @media screen and (min-width: 1440px) {
   .button {
     position: unset;
     right: unset;
     left: unset;
+  }
+  .notVisible {
+    display: flex;
   }
 }

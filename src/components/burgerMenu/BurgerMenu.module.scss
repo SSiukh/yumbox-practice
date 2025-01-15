@@ -1,0 +1,67 @@
+@mixin setTranstion($value) {
+  transition: $value 250ms ease-in;
+}
+$y: #f3ba4f;
+
+.burgerMenuOverlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-color: black;
+  flex-direction: column;
+
+  .burgerContainer {
+    padding-top: 127px;
+    width: 375px;
+    margin: 0 auto;
+    padding-left: 64px;
+
+    .linkList {
+      margin-top: 19px;
+
+      .link {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 246%;
+        color: #fff;
+      }
+    }
+
+    .addres {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+
+      .email {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        color: #f3ba4f;
+      }
+
+      .telNumber {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+
+    .iconsList {
+      display: flex;
+      margin-top: 75px;
+      gap: 44px;
+    }
+  }
+}
+.opened {
+  display: flex;
+}

@@ -15,6 +15,7 @@ body {
 
 a {
   text-decoration: none;
+  font-style: normal;
 }
 
 h1,
@@ -40,16 +41,15 @@ img {
 }
 
 .container {
+  position: relative;
   width: 375px;
-  padding: 0 20px;
+  padding: 82px 20px 116px 20px;
   margin: 0 auto;
-  padding-bottom: 116px;
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
-    padding: 0 82px;
-    padding-bottom: 131px;
+    padding: 127px 82px 131px 82px;
   }
 }

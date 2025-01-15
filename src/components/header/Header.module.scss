@@ -1,9 +1,21 @@
+.headerOverline {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 6;
+  background-color: #000000;
+  position: fixed;
+}
+
 .header {
+  margin: 0 auto;
+  width: 335px;
   padding-top: 20px;
+  padding-bottom: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+
   .logo {
     width: 75px;
   }
@@ -46,8 +58,9 @@
 
 @media screen and (min-width: 1440px) {
   .header {
+    width: 1276px;
     padding-top: 35px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     .logo {
       width: 114px;
     }
