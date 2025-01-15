@@ -5,13 +5,18 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa';
 
-const BurgerMenu = ({ isOpen, openCart }) => {
+const BurgerMenu = ({ isOpen, openCart, totalPrice, count }) => {
   return (
     <div
       className={clsx(styles.burgerMenuOverlay, { [styles.opened]: isOpen })}
     >
       <div className={styles.burgerContainer}>
-        <CartButton openCart={openCart} ordinary={true} />
+        <CartButton
+          count={count}
+          openCart={openCart}
+          ordinary={true}
+          totalPrice={totalPrice}
+        />
         <ul className={styles.linkList}>
           <li>
             <a className={styles.link} href="">

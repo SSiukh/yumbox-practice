@@ -4,7 +4,16 @@ import { FaPlus } from 'react-icons/fa6';
 import { FaMinus } from 'react-icons/fa';
 import cartImg from '../../assets/cart-img.png';
 
-const cartProductCard = ({ name, weight, price, qty }) => {
+const cartProductCard = ({
+  name,
+  weight,
+  price,
+  qty,
+  deleteFromCart,
+  id,
+  decreaseQty,
+  addQty,
+}) => {
   return (
     <div className={styles.card}>
       <div className={styles.topContent}>
@@ -15,14 +24,26 @@ const cartProductCard = ({ name, weight, price, qty }) => {
             <p className={styles.weight}>{weight} гр</p>
           </div>
         </div>
-        <RiDeleteBinLine className={styles.icon} size={20} />
+        <RiDeleteBinLine
+          onClick={() => deleteFromCart(id)}
+          className={styles.icon}
+          size={20}
+        />
       </div>
       <div className={styles.bottomContent}>
         <p className={styles.price}>{price} ₴</p>
         <div className={styles.counter}>
-          <FaMinus className={styles.counterButton} size={13} />
+          <FaMinus
+            onClick={() => decreaseQty(id)}
+            className={styles.counterButton}
+            size={13}
+          />
           <span className={styles.counterItem}>{qty}</span>
-          <FaPlus className={styles.counterButton} size={13} />
+          <FaPlus
+            onClick={() => addQty(id)}
+            className={styles.counterButton}
+            size={13}
+          />
         </div>
       </div>
     </div>

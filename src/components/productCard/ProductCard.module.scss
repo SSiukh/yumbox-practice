@@ -42,6 +42,27 @@
       border-color: #f3ba4f;
       color: #f3ba4f;
     }
+
+    .inCartButton {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      .buttonIcon {
+        color: #52fc96;
+      }
+      .inCartButtonText {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        text-align: center;
+        color: #fff;
+        .inCartButtonTextEmphasise {
+          font-weight: 600;
+        }
+      }
+    }
   }
 }
 

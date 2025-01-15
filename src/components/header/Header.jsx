@@ -3,7 +3,14 @@ import CartButton from '../cartButton/CartButton';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoClose } from 'react-icons/io5';
 
-const Header = ({ openBurger, isOpen, openCart, cartButtonNotVisible }) => {
+const Header = ({
+  count,
+  openBurger,
+  isOpen,
+  openCart,
+  cartButtonNotVisible,
+  totalPrice,
+}) => {
   return (
     <div className={styles.headerOverline}>
       <header className={styles.header}>
@@ -38,7 +45,12 @@ const Header = ({ openBurger, isOpen, openCart, cartButtonNotVisible }) => {
             <GiHamburgerMenu className={styles.burgerIcon} size={22} />
           )}
         </div>
-        <CartButton openCart={openCart} notVisible={cartButtonNotVisible} />
+        <CartButton
+          count={count}
+          openCart={openCart}
+          notVisible={cartButtonNotVisible}
+          totalPrice={totalPrice}
+        />
       </header>
     </div>
   );

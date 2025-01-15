@@ -10,8 +10,8 @@ const CartButton = ({ count, totalPrice, openCart, ordinary, notVisible }) => {
         [styles.notVisible]: notVisible,
       })}
     >
-      <span className={styles.counter}>{count}2</span>
-      <span className={styles.price}>{totalPrice}2023 грн</span>
+      <span className={styles.counter}>{count}</span>
+      <span className={styles.price}>{totalPrice} грн</span>
     </div>
   );
 };

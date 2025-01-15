@@ -3,8 +3,15 @@ import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 import ProductCardCart from '../cartProductCard/ProductCardCart';
 
-// Видалення реалізувати за допомогою filter!
-const Cart = ({ isOpen, openCart, totalPrice }) => {
+const Cart = ({
+  isOpen,
+  openCart,
+  cart,
+  totalPrice,
+  deleteFromCart,
+  decreaseQty,
+  addQty,
+}) => {
   return (
     <div className={clsx(styles.cartOverlay, isOpen && styles.opened)}>
       <div className={styles.cartContainer}>
@@ -14,13 +21,22 @@ const Cart = ({ isOpen, openCart, totalPrice }) => {
             <IoClose className={styles.close} onClick={openCart} size={25} />
           </div>
           <div className={styles.cardContainer}>
-            <ProductCardCart
-              name="Yumbox 21 сет суперкачний
-                суперсет"
-              weight={1500}
-              price={799}
-              qty={1}
-            />
+            {cart.map(object => {
+              return (
+                <ProductCardCart
+                  key={object.id}
+                  id={object.id}
+                  name={`Yumbox ${object.id} сет суперкачний
+                суперсет`}
+                  weight={object.weight}
+                  price={object.price * object.qty}
+                  qty={object.qty}
+                  deleteFromCart={deleteFromCart}
+                  decreaseQty={decreaseQty}
+                  addQty={addQty}
+                />
+              );
+            })}
           </div>
         </div>
         <div className={styles.bottomContent}>

@@ -3,10 +3,16 @@ import mobileBox from '../../assets/mobile-box.jpg';
 import mobileBox2x from '../../assets/mobile-box-2x.jpg';
 import desktopBox from '../../assets/desktop-box.jpg';
 import desktopBox2x from '../../assets/desktop-box-2x.jpg';
+import { FaRegCheckCircle } from 'react-icons/fa';
 import { useState } from 'react';
 
-const ProductCard = ({ id, price, weight }) => {
+const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
   const [mouseOn, setMouseOn] = useState(false);
+
+  const isInCart = cart.some(object => {
+    return object.id === id;
+  });
+  const currentElem = cart.find(object => object.id === id);
 
   return (
     <div className={styles.card}>
@@ -28,12 +34,30 @@ const ProductCard = ({ id, price, weight }) => {
       </p>
       <p className={styles.weight}>{weight} гр</p>
       <button
+        onClick={() => addItemToCart({ id, price, weight, qty: 1 })}
         onMouseEnter={() => setMouseOn(true)}
         onMouseLeave={() => setMouseOn(false)}
         className={styles.addToCart}
       >
-        {mouseOn ? `Добавити в кошик` : `${price} грн`}
-        {/*  items from local storage if true : text and icon, щоб міняти назавжди поки не видалять з кошика*/}
+        {isInCart ? (
+          <span className={styles.inCartButton}>
+            <FaRegCheckCircle className={styles.buttonIcon} size={24} />
+            <span className={styles.inCartButtonText}>
+              В кошику{' '}
+              <span className={styles.inCartButtonTextEmphasise}>
+                {currentElem.qty} шт
+              </span>{' '}
+              за{' '}
+              <span className={styles.inCartButtonTextEmphasise}>
+                {currentElem.qty * currentElem.price} грн
+              </span>
+            </span>
+          </span>
+        ) : mouseOn ? (
+          `Добавити в кошик`
+        ) : (
+          `${price} грн`
+        )}
       </button>
     </div>
   );
