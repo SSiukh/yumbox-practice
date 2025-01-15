@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useCart = () => {
   const [cart, setCart] = useState(() => {
     const data = JSON.parse(window.localStorage.getItem('cart'));
-    return data || [];
+    return data ?? [];
   });
 
   const saveCart = updatedCart => {
