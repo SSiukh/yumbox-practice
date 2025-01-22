@@ -3,6 +3,7 @@ import mobileBox from '../../assets/mobile-box.jpg';
 import mobileBox2x from '../../assets/mobile-box-2x.jpg';
 import desktopBox from '../../assets/desktop-box.jpg';
 import desktopBox2x from '../../assets/desktop-box-2x.jpg';
+import clsx from 'clsx';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { useState } from 'react';
 
@@ -15,7 +16,11 @@ const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
   const currentElem = cart.find(object => object.id === id);
 
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onMouseEnter={() => setMouseOn(true)}
+      onMouseLeave={() => setMouseOn(false)}
+    >
       <picture className={styles.image}>
         <source
           media="(min-width: 1440px)"
@@ -35,11 +40,13 @@ const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
       <p className={styles.weight}>{weight} гр</p>
       <button
         onClick={() => addItemToCart({ id, price, weight, qty: 1 })}
-        onMouseEnter={() => setMouseOn(true)}
-        onMouseLeave={() => setMouseOn(false)}
-        className={styles.addToCart}
+        className={clsx(styles.addToCart, {
+          [styles.onCard]: mouseOn || isInCart,
+        })}
       >
-        {isInCart ? (
+        {mouseOn ? (
+          `Добавити в кошик`
+        ) : isInCart ? (
           <span className={styles.inCartButton}>
             <FaRegCheckCircle className={styles.buttonIcon} size={24} />
             <span className={styles.inCartButtonText}>
@@ -53,8 +60,6 @@ const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
               </span>
             </span>
           </span>
-        ) : mouseOn ? (
-          `Добавити в кошик`
         ) : (
           `${price} грн`
         )}

@@ -1,7 +1,6 @@
 import styles from './Header.module.scss';
 import CartButton from '../cartButton/CartButton';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { IoClose } from 'react-icons/io5';
+import clsx from 'clsx';
 
 const Header = ({
   count,
@@ -13,45 +12,57 @@ const Header = ({
 }) => {
   return (
     <div className={styles.headerOverline}>
-      <header className={styles.header}>
-        <img className={styles.logo} src="/logo.svg" alt="logotype" />
-        <ul className={styles.linkList}>
-          <li>
-            <a className={styles.link} href="">
-              Каталог
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Кейтеринг
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Про нас
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Контакти
-            </a>
-          </li>
-        </ul>
-        <div onClick={openBurger} className={styles.burgerMenu}>
-          <span className={styles.burgerMenuText}>Меню</span>
-          {isOpen ? (
-            <IoClose className={styles.burgerIcon} size={24} />
-          ) : (
-            <GiHamburgerMenu className={styles.burgerIcon} size={22} />
-          )}
-        </div>
-        <CartButton
-          count={count}
-          openCart={openCart}
-          notVisible={cartButtonNotVisible}
-          totalPrice={totalPrice}
-        />
-      </header>
+      <div
+        className={clsx(
+          styles.container,
+          cartButtonNotVisible && styles.cartContainer
+        )}
+      >
+        <header className={styles.header}>
+          <img className={styles.logo} src="/logo.svg" alt="logotype" />
+          <nav>
+            <ul className={styles.linkList}>
+              <li>
+                <a className={styles.link} href="">
+                  Каталог
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="">
+                  Кейтеринг
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="">
+                  Про нас
+                </a>
+              </li>
+              <li>
+                <a className={styles.link} href="">
+                  Контакти
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <button onClick={openBurger} className={styles.burgerMenu}>
+            <span className={styles.burgerMenuText}>Меню</span>
+            <div className={styles.burgerIcon}>
+              <span
+                className={clsx(
+                  styles.burgerIconBurger,
+                  isOpen && styles.burgerIconClose
+                )}
+              ></span>
+            </div>
+          </button>
+          <CartButton
+            count={count}
+            openCart={openCart}
+            notVisible={cartButtonNotVisible}
+            totalPrice={totalPrice}
+          />
+        </header>
+      </div>
     </div>
   );
 };

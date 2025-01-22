@@ -22,27 +22,18 @@ const App = () => {
     setCartIsOpen(false);
   };
 
-  const totalPrice = cart.reduce((total, item) => {
-    return total + item.price * item.qty;
-  }, 0);
+  const countPrice = () => {
+    const totalPrice = cart.reduce((total, item) => {
+      return total + item.price * item.qty;
+    }, 0);
+
+    return totalPrice > 999 ? totalPrice - totalPrice / 10 : totalPrice;
+  };
+
+  const totalPrice = countPrice();
 
   return (
     <div className="container">
-      <Cart
-        isOpen={cartIsOpen}
-        openCart={openCart}
-        cart={cart}
-        totalPrice={totalPrice}
-        deleteFromCart={removeItem}
-        decreaseQty={decreaseQty}
-        addQty={addQty}
-      />
-      <BurgerMenu
-        count={cart.length}
-        openCart={openCart}
-        isOpen={burgerIsOpen}
-        totalPrice={totalPrice}
-      />
       <Header
         count={cart.length}
         openCart={openCart}
@@ -51,8 +42,28 @@ const App = () => {
         cartButtonNotVisible={cartIsOpen}
         totalPrice={totalPrice}
       />
-      <Hero topItems={data.filter(item => item.top === true)} />
-      <BestSellers addItemToCart={addItem} cart={cart} />
+      <main>
+        <Cart
+          openBurger={openBurger}
+          burgerIsOpen={burgerIsOpen}
+          isOpen={cartIsOpen}
+          openCart={openCart}
+          cart={cart}
+          totalPrice={totalPrice}
+          deleteFromCart={removeItem}
+          decreaseQty={decreaseQty}
+          addQty={addQty}
+        />
+        <BurgerMenu
+          count={cart.length}
+          openCart={openCart}
+          isOpen={burgerIsOpen}
+          totalPrice={totalPrice}
+        />
+
+        <Hero topItems={data.filter(item => item.top === true)} />
+        <BestSellers addItemToCart={addItem} cart={cart} />
+      </main>
     </div>
   );
 };

@@ -41,14 +41,17 @@ const Hero = ({ topItems }) => {
       </div>
 
       <div className={styles.buttons}>
-        <div className={`${styles.prevButton} button-prev`}>
+        <button
+          disabled={activeIndex === 0}
+          className={clsx(styles.prevButton, 'button-prev')}
+        >
           <IoArrowBackCircleOutline
             className={clsx(styles.prevIconButton, {
               [styles.disabled]: !activeIndex,
             })}
             size={44}
           />
-        </div>
+        </button>
         <div className={styles.pagination}>
           <span
             className={clsx(styles.paginationItem, {
@@ -66,14 +69,14 @@ const Hero = ({ topItems }) => {
             })}
           ></span>
         </div>
-        <div className={clsx(styles.nextButton, 'button-next')}>
+        <button className={clsx(styles.nextButton, 'button-next')}>
           <IoArrowBackCircleOutline
             className={clsx(styles.nextIconButton, {
               [styles.disabled]: activeIndex === 2,
             })}
             size={44}
           />
-        </div>
+        </button>
       </div>
     </div>
   );

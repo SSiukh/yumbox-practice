@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './BurgerMenu.module.scss';
 import clsx from 'clsx';
 import CartButton from '../cartButton/CartButton';
@@ -6,39 +7,57 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa';
 
 const BurgerMenu = ({ isOpen, openCart, totalPrice, count }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scoll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isOpen]);
+
   return (
     <div
-      className={clsx(styles.burgerMenuOverlay, { [styles.opened]: isOpen })}
+      className={clsx(styles.burgerMenuOverlay, { 'visually-hidden': !isOpen })}
     >
-      <div className={styles.burgerContainer}>
+      <div
+        className={clsx(styles.burgerContainer, {
+          [styles.burgerContainerOpen]: isOpen,
+        })}
+      >
         <CartButton
           count={count}
           openCart={openCart}
           ordinary={true}
           totalPrice={totalPrice}
         />
-        <ul className={styles.linkList}>
-          <li>
-            <a className={styles.link} href="">
-              Каталог
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Кейтеринг
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Про нас
-            </a>
-          </li>
-          <li>
-            <a className={styles.link} href="">
-              Контакти
-            </a>
-          </li>
-        </ul>
+        <nav>
+          <ul className={styles.linkList}>
+            <li>
+              <a className={styles.link} href="">
+                Каталог
+              </a>
+            </li>
+            <li>
+              <a className={styles.link} href="">
+                Кейтеринг
+              </a>
+            </li>
+            <li>
+              <a className={styles.link} href="">
+                Про нас
+              </a>
+            </li>
+            <li>
+              <a className={styles.link} href="">
+                Контакти
+              </a>
+            </li>
+          </ul>
+        </nav>
         <address className={styles.addres}>
           <a className={styles.email} href="mailto:yumbox.lutsk@gmail.com">
             yumbox.lutsk@gmail.com
@@ -49,13 +68,19 @@ const BurgerMenu = ({ isOpen, openCart, totalPrice, count }) => {
         </address>
         <ul className={styles.iconsList}>
           <li className={styles.iconitem}>
-            <FaLinkedinIn size={24} />
+            <a href="">
+              <FaLinkedinIn size={24} />
+            </a>
           </li>
           <li className={styles.iconitem}>
-            <FaInstagram size={24} />
+            <a href="">
+              <FaInstagram size={24} />
+            </a>
           </li>
           <li className={styles.iconitem}>
-            <FaFacebookF size={24} />
+            <a href="">
+              <FaFacebookF size={24} />
+            </a>
           </li>
         </ul>
       </div>

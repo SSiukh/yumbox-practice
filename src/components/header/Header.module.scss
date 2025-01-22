@@ -4,12 +4,17 @@
   width: 100%;
   z-index: 6;
   background-color: #000000;
-  position: fixed;
+  position: sticky;
+
+  .container {
+    width: 335px;
+    margin: 0 auto;
+  }
 }
 
 .header {
   margin: 0 auto;
-  width: 335px;
+  width: 100%;
   padding-top: 20px;
   padding-bottom: 14px;
   display: flex;
@@ -38,6 +43,8 @@
     }
   }
   .burgerMenu {
+    background-color: transparent;
+    border: none;
     display: flex;
     gap: 9px;
     align-items: center;
@@ -51,14 +58,75 @@
     }
 
     .burgerIcon {
-      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      .burgerIconBurger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        width: 22px;
+        height: 2px;
+
+        &::after {
+          background-color: inherit;
+          content: '';
+          width: 22px;
+          height: 2px;
+          display: block;
+          position: absolute;
+          top: 6px;
+          transition: transform 250ms ease-in;
+        }
+
+        &::before {
+          background-color: inherit;
+          content: '';
+          width: 22px;
+          height: 2px;
+          display: block;
+          position: absolute;
+          top: -6px;
+          transition: transform 250ms ease-in;
+        }
+      }
+
+      .burgerIconClose {
+        visibility: hidden;
+
+        &::before {
+          top: 50%;
+          transform: rotate(-45deg);
+          visibility: visible;
+        }
+
+        &::after {
+          top: 50%;
+          transform: rotate(45deg);
+          visibility: visible;
+        }
+      }
     }
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1110px) {
+  .headerOverline {
+    .container {
+      width: 100%;
+    }
+    .cartContainer {
+      max-width: 1440px;
+      padding: 0 82px;
+    }
+  }
+
   .header {
-    width: 1276px;
+    width: 100%;
     padding-top: 35px;
     padding-bottom: 20px;
     .logo {

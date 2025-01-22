@@ -16,6 +16,7 @@ body {
 a {
   text-decoration: none;
   font-style: normal;
+  color: inherit;
 }
 
 h1,
@@ -40,20 +41,41 @@ img {
   max-width: 100%;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .container {
   position: relative;
   width: 375px;
-  padding: 82px 20px 116px 20px;
+  padding: 0 20px;
   margin: 0 auto;
+  padding-bottom: 115px;
 }
 .best-sellers-swiper {
   width: 335px;
   overflow: hidden;
 }
 
-@media screen and (min-width: 1440px) {
+.no-scroll {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1110px) {
   .container {
-    width: 1440px;
-    padding: 127px 82px 131px 82px;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 82px;
+    padding-bottom: 115px;
   }
 }

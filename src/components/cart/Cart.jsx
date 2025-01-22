@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import styles from './Cart.module.scss';
 import clsx from 'clsx';
-import { IoClose } from 'react-icons/io5';
 import ProductCardCart from '../cartProductCard/ProductCardCart';
+import Header from '../header/Header';
 
 const Cart = ({
   isOpen,
@@ -11,14 +12,52 @@ const Cart = ({
   deleteFromCart,
   decreaseQty,
   addQty,
+  openBurger,
+  burgerIsOpen,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scoll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isOpen]);
+
+  const logOrder = () => {
+    console.log(cart);
+  };
+
   return (
-    <div className={clsx(styles.cartOverlay, isOpen && styles.opened)}>
-      <div className={styles.cartContainer}>
+    <div className={clsx(styles.cartOverlay, !isOpen && 'visually-hidden')}>
+      <Header
+        count={cart.length}
+        openCart={openCart}
+        openBurger={openBurger}
+        isOpen={burgerIsOpen}
+        cartButtonNotVisible={isOpen}
+        totalPrice={totalPrice}
+      />
+
+      <div
+        className={clsx(styles.cartContainer, {
+          [styles.cartContainerOpen]: isOpen,
+        })}
+      >
         <div className={styles.cartTopContainer}>
           <div className={styles.titleContainer}>
             <h2 className={styles.title}>Корзина</h2>
-            <IoClose className={styles.close} onClick={openCart} size={25} />
+            <button onClick={openCart} className={styles.close}>
+              <span
+                className={clsx(styles.closeElem, isOpen && styles.closeFirst)}
+              ></span>
+              <span
+                className={clsx(styles.closeElem, isOpen && styles.closeSecond)}
+              ></span>
+            </button>
           </div>
           <div className={styles.cardContainer}>
             {cart.map(object => {
@@ -44,7 +83,9 @@ const Cart = ({
             <p className={styles.delivery}>Доставка</p>
             <p className={styles.deliveryPrice}>50 ₴</p>
           </div>
-          <button className={styles.button}>оформити за {totalPrice} ₴</button>
+          <button onClick={logOrder} className={styles.button}>
+            оформити за {totalPrice} ₴
+          </button>
         </div>
       </div>
     </div>

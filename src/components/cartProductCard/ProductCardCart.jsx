@@ -33,17 +33,16 @@ const cartProductCard = ({
       <div className={styles.bottomContent}>
         <p className={styles.price}>{price} ₴</p>
         <div className={styles.counter}>
-          <FaMinus
+          <button
             onClick={() => decreaseQty(id)}
             className={styles.counterButton}
-            size={13}
-          />
+          >
+            <FaMinus size={13} />
+          </button>
           <span className={styles.counterItem}>{qty}</span>
-          <FaPlus
-            onClick={() => addQty(id)}
-            className={styles.counterButton}
-            size={13}
-          />
+          <button className={styles.counterButton} onClick={() => addQty(id)}>
+            <FaPlus size={13} />
+          </button>
         </div>
       </div>
     </div>

@@ -38,6 +38,10 @@
     background-color: transparent;
     transition: border-color 250ms ease-in, color 250ms ease-in;
 
+    &.onCard {
+      border-color: #fff;
+    }
+
     &:hover {
       border-color: #f3ba4f;
       color: #f3ba4f;

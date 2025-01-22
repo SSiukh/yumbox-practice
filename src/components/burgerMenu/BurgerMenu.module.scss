@@ -7,7 +7,7 @@ $y: #f3ba4f;
   top: 0;
   left: 0;
   position: fixed;
-  display: none;
+  display: flex;
   width: 100%;
   height: 100%;
   z-index: 5;
@@ -19,6 +19,9 @@ $y: #f3ba4f;
     width: 375px;
     margin: 0 auto;
     padding-left: 64px;
+    transform: translateY(300px);
+    opacity: 0;
+    transition: opacity 250ms ease-in, transform 250ms ease-in;
 
     .linkList {
       margin-top: 19px;
@@ -61,7 +64,9 @@ $y: #f3ba4f;
       gap: 44px;
     }
   }
-}
-.opened {
-  display: flex;
+
+  .burgerContainerOpen {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

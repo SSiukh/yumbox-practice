@@ -1,71 +1,13 @@
 .slide {
-  background-image: url('../../assets/mobile-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 25px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: center;
   height: 316px;
-  .sticker {
-    display: none;
-    position: absolute;
-    top: 11px;
-    left: 125px;
-  }
-  .info {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    bottom: 19px;
-
-    .infoSet {
-      font-size: 34px;
-      color: #fcb852;
-      font-weight: 600;
-    }
-    .infoPrice {
-      border: 3px solid #fcb852;
-      border-radius: 17px;
-      padding: 0 26px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      color: #fcb852;
-      font-weight: 500;
-      font-size: 20px;
-    }
-  }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 2dppx),
-  (min-resolution: 192dpi) {
+@media screen and (min-width: 1110px) {
   .slide {
-    background-image: url('../../assets/mobile-background-2x.jpg');
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .slide {
-    height: 503px;
-    background-image: url('../../assets/desktop-background.jpg');
-    .sticker {
-      display: block;
-    }
-    .info {
-      gap: 21px;
-      bottom: 44px;
-    }
-  }
-  @media screen and (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 2dppx),
-    (min-resolution: 192dpi) {
-    .slide {
-      background-image: url('../../assets/desktop-background-2x.jpg');
-    }
+    height: auto;
   }
 }

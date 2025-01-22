@@ -5,6 +5,29 @@
   justify-content: space-between;
   position: relative;
 
+  .prevButton:not(:disabled) {
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: #f3ba4f;
+    }
+  }
+  .nextButton:not(:disabled) {
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: #f3ba4f;
+    }
+  }
+  button:disabled {
+    background-color: transparent;
+    border: none;
+    color: #ffffff40;
+  }
   .pagination {
     display: flex;
     gap: 8px;
@@ -20,15 +43,25 @@
     }
   }
   .nextIconButton {
+    color: inherit;
     transform: rotate(180deg);
     transition: color 250ms ease-in;
   }
   .prevIconButton {
+    color: inherit;
     transition: color 250ms ease-in;
   }
-  .disabled {
-    color: #ffffff40;
-    cursor: not-allowed;
+}
+
+@media screen and (min-width: 1110px) and (max-width: 1440px) {
+  .buttons {
+    justify-content: space-between;
+    .prevButton {
+      cursor: pointer;
+    }
+    .nextButton {
+      cursor: pointer;
+    }
   }
 }
 
@@ -36,18 +69,18 @@
   .buttons {
     justify-content: center;
     .prevButton {
+      bottom: 265px;
       position: absolute;
       left: 9px;
-      bottom: 265px;
+
       z-index: 3;
-      cursor: pointer;
     }
     .nextButton {
       position: absolute;
       right: 9px;
-      bottom: 265px;
+
       z-index: 3;
-      cursor: pointer;
+      bottom: 265px;
     }
   }
 }

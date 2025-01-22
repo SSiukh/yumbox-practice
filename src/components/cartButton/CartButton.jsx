@@ -2,17 +2,28 @@ import styles from './CartButton.module.scss';
 import clsx from 'clsx';
 
 const CartButton = ({ count, totalPrice, openCart, ordinary, notVisible }) => {
+  const convertPrice = prevPrice => {
+    if (prevPrice > 999) {
+      return `${Math.floor(totalPrice / 1000)} ${totalPrice % 1000}`;
+    }
+    return prevPrice;
+  };
+
   return (
-    <div
+    <button
       onClick={openCart}
       className={clsx(styles.button, {
         [styles.ordinary]: ordinary,
         [styles.notVisible]: notVisible,
       })}
     >
-      <span className={styles.counter}>{count}</span>
-      <span className={styles.price}>{totalPrice} грн</span>
-    </div>
+      <span className={clsx(styles.counter, notVisible && styles.counterOpen)}>
+        {count}
+      </span>
+      <span className={clsx(styles.price, notVisible && styles.priceOpen)}>
+        {convertPrice(totalPrice)} грн
+      </span>
+    </button>
   );
 };
 

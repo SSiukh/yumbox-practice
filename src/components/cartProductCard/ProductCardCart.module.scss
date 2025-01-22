@@ -11,6 +11,7 @@
       display: flex;
       gap: 24px;
       .data {
+        margin-right: 13px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -61,11 +62,6 @@
       align-items: center;
       gap: 22px;
       width: fit-content;
-      transition: border-color 250ms ease-in;
-
-      &:hover {
-        border-color: #fcb852;
-      }
 
       .counterItem {
         font-family: var(--second-family);
@@ -77,6 +73,13 @@
       }
 
       .counterButton {
+        padding: 0;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: none;
         transition: color 250ms ease-in;
         cursor: pointer;
         &:hover {
