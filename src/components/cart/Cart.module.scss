@@ -46,7 +46,9 @@
           height: 22px;
 
           &:hover .closeFirst,
-          &:hover .closeSecond {
+          &:hover .closeSecond,
+          &:active .closeFirst,
+          &:active .closeSecond {
             background-color: #fcb852;
           }
 
@@ -156,7 +158,8 @@
       transition: background-color 250ms ease-in, border-color 250ms ease-in,
         color 250ms ease-in;
 
-      &:hover {
+      &:hover,
+      &:active {
         background-color: transparent;
         border-color: #fcb852;
         color: #fcb852;
@@ -165,7 +168,34 @@
   }
 }
 
-@media screen and (min-width: 1110px) {
+.cartHidden {
+  display: none;
+}
+
+.cartOpen {
+  display: flex;
+  opacity: 1;
+}
+
+@keyframes appear {
+  from {
+    display: none;
+  }
+  to {
+    display: flex;
+  }
+}
+
+@keyframes disappear {
+  from {
+    display: flex;
+  }
+  to {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 770px) {
   .cartOverlay {
     background-color: #fcb85211;
     backdrop-filter: blur(10px);
@@ -200,6 +230,9 @@
     }
     .cartContainerOpen {
       transform: translateX(0);
+    }
+    .cartContainerClose {
+      transform: translateX(300px);
     }
   }
 }

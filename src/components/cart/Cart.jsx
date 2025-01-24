@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Cart.module.scss';
 import clsx from 'clsx';
 import ProductCardCart from '../cartProductCard/ProductCardCart';
@@ -14,12 +14,25 @@ const Cart = ({
   addQty,
   openBurger,
   burgerIsOpen,
+  cleanCart,
+  closeCart,
 }) => {
+  const [isShouldOpen, setIsShouldOpen] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
+      setIsShouldOpen(false);
     } else {
       document.body.classList.remove('no-scoll');
+
+      const timeout = setTimeout(() => {
+        setIsShouldOpen(true);
+      }, 250);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
 
     return () => {
@@ -27,12 +40,16 @@ const Cart = ({
     };
   }, [isOpen]);
 
-  const logOrder = () => {
+  const handleOrder = () => {
     console.log(cart);
+    cleanCart();
+    closeCart();
   };
 
   return (
-    <div className={clsx(styles.cartOverlay, !isOpen && 'visually-hidden')}>
+    <div
+      className={clsx(styles.cartOverlay, isShouldOpen && 'visually-hidden')}
+    >
       <Header
         count={cart.length}
         openCart={openCart}
@@ -45,6 +62,7 @@ const Cart = ({
       <div
         className={clsx(styles.cartContainer, {
           [styles.cartContainerOpen]: isOpen,
+          [styles.cartContainerClose]: !isOpen,
         })}
       >
         <div className={styles.cartTopContainer}>
@@ -83,7 +101,7 @@ const Cart = ({
             <p className={styles.delivery}>Доставка</p>
             <p className={styles.deliveryPrice}>50 ₴</p>
           </div>
-          <button onClick={logOrder} className={styles.button}>
+          <button onClick={handleOrder} className={styles.button}>
             оформити за {totalPrice} ₴
           </button>
         </div>

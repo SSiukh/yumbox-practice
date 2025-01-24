@@ -44,9 +44,7 @@ const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
           [styles.onCard]: mouseOn || isInCart,
         })}
       >
-        {mouseOn ? (
-          `Добавити в кошик`
-        ) : isInCart ? (
+        {isInCart ? (
           <span className={styles.inCartButton}>
             <FaRegCheckCircle className={styles.buttonIcon} size={24} />
             <span className={styles.inCartButtonText}>
@@ -60,6 +58,8 @@ const ProductCard = ({ id, price, weight, addItemToCart, cart }) => {
               </span>
             </span>
           </span>
+        ) : mouseOn ? (
+          `Добавити в кошик`
         ) : (
           `${price} грн`
         )}

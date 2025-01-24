@@ -9,7 +9,7 @@ const BestSellers = ({ addItemToCart, cart }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1110);
+      setIsMobile(window.innerWidth < 863);
     };
 
     window.addEventListener('resize', handleResize);

@@ -42,7 +42,8 @@
       border-color: #fff;
     }
 
-    &:hover {
+    &:hover,
+    &:active {
       border-color: #f3ba4f;
       color: #f3ba4f;
     }
@@ -72,17 +73,12 @@
 
 @media screen and (min-width: 1440px) {
   .card {
-    .image {
-    }
-    .title {
-    }
-    .weight {
-    }
     .addToCart {
       border: 2px solid transparent;
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &:active {
         border-color: #f3ba4f;
       }
     }

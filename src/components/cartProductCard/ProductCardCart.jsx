@@ -14,6 +14,8 @@ const cartProductCard = ({
   decreaseQty,
   addQty,
 }) => {
+  const convPrice = price.toLocaleString().replace(',', ' ');
+
   return (
     <div className={styles.card}>
       <div className={styles.topContent}>
@@ -31,7 +33,7 @@ const cartProductCard = ({
         />
       </div>
       <div className={styles.bottomContent}>
-        <p className={styles.price}>{price} ₴</p>
+        <p className={styles.price}>{convPrice} ₴</p>
         <div className={styles.counter}>
           <button
             onClick={() => decreaseQty(id)}

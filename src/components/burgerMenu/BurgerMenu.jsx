@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './BurgerMenu.module.scss';
 import clsx from 'clsx';
 import CartButton from '../cartButton/CartButton';
@@ -7,11 +7,21 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa';
 
 const BurgerMenu = ({ isOpen, openCart, totalPrice, count }) => {
+  const [isShouldOpen, setIsShouldOpen] = useState(false);
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('no-scroll');
+      setIsShouldOpen(false);
     } else {
       document.body.classList.remove('no-scoll');
+
+      const timeout = setTimeout(() => {
+        setIsShouldOpen(true);
+      }, 250);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
 
     return () => {
@@ -21,7 +31,10 @@ const BurgerMenu = ({ isOpen, openCart, totalPrice, count }) => {
 
   return (
     <div
-      className={clsx(styles.burgerMenuOverlay, { 'visually-hidden': !isOpen })}
+      className={clsx(
+        styles.burgerMenuOverlay,
+        isShouldOpen && 'visually-hidden'
+      )}
     >
       <div
         className={clsx(styles.burgerContainer, {

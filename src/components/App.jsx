@@ -10,7 +10,8 @@ import useCart from '../hooks/useCart';
 const App = () => {
   const [burgerIsOpen, setBurgerIsOpen] = useState(false);
   const [cartIsOpen, setCartIsOpen] = useState(false);
-  const { cart, addItem, removeItem, addQty, decreaseQty } = useCart();
+  const { cart, addItem, removeItem, addQty, decreaseQty, cleanCart } =
+    useCart();
 
   const openCart = () => {
     setCartIsOpen(!cartIsOpen);
@@ -30,10 +31,10 @@ const App = () => {
     return totalPrice > 999 ? totalPrice - totalPrice / 10 : totalPrice;
   };
 
-  const totalPrice = countPrice();
+  const totalPrice = countPrice().toLocaleString().replace(',', ' ');
 
   return (
-    <div className="container">
+    <>
       <Header
         count={cart.length}
         openCart={openCart}
@@ -42,29 +43,35 @@ const App = () => {
         cartButtonNotVisible={cartIsOpen}
         totalPrice={totalPrice}
       />
-      <main>
-        <Cart
-          openBurger={openBurger}
-          burgerIsOpen={burgerIsOpen}
-          isOpen={cartIsOpen}
-          openCart={openCart}
-          cart={cart}
-          totalPrice={totalPrice}
-          deleteFromCart={removeItem}
-          decreaseQty={decreaseQty}
-          addQty={addQty}
-        />
-        <BurgerMenu
-          count={cart.length}
-          openCart={openCart}
-          isOpen={burgerIsOpen}
-          totalPrice={totalPrice}
-        />
+      <div className="container">
+        <main>
+          <Cart
+            openBurger={openBurger}
+            burgerIsOpen={burgerIsOpen}
+            isOpen={cartIsOpen}
+            openCart={openCart}
+            cart={cart}
+            totalPrice={totalPrice}
+            deleteFromCart={removeItem}
+            decreaseQty={decreaseQty}
+            addQty={addQty}
+            cleanCart={cleanCart}
+            closeCart={() => {
+              setCartIsOpen(false);
+            }}
+          />
+          <BurgerMenu
+            count={cart.length}
+            openCart={openCart}
+            isOpen={burgerIsOpen}
+            totalPrice={totalPrice}
+          />
 
-        <Hero topItems={data.filter(item => item.top === true)} />
-        <BestSellers addItemToCart={addItem} cart={cart} />
-      </main>
-    </div>
+          <Hero topItems={data.filter(item => item.top === true)} />
+          <BestSellers addItemToCart={addItem} cart={cart} />
+        </main>
+      </div>
+    </>
   );
 };
 

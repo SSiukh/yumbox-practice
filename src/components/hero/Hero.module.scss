@@ -10,7 +10,8 @@
     background-color: transparent;
     border: none;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: #f3ba4f;
     }
   }
@@ -19,7 +20,8 @@
     background-color: transparent;
     border: none;
 
-    &:hover {
+    &:hover,
+    &:active {
       color: #f3ba4f;
     }
   }

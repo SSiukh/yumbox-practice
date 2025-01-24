@@ -36,7 +36,8 @@
         color: #fff;
         transition: color 250ms ease-in;
 
-        &:hover {
+        &:hover,
+        &:active {
           color: #f3ba4f;
         }
       }
@@ -114,17 +115,17 @@
   }
 }
 
-@media screen and (min-width: 1110px) {
+@media screen and (min-width: 500px) {
   .headerOverline {
     .container {
-      width: 100%;
-    }
-    .cartContainer {
       max-width: 1440px;
+      width: 100%;
       padding: 0 82px;
     }
   }
+}
 
+@media screen and (min-width: 770px) {
   .header {
     width: 100%;
     padding-top: 35px;
@@ -132,11 +133,12 @@
     .logo {
       width: 114px;
     }
-    .linkList {
-      display: flex;
-    }
+
     .burgerMenu {
       display: none;
+    }
+    .linkList {
+      display: flex;
     }
   }
 }

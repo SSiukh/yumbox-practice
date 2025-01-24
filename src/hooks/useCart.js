@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useCart = () => {
   const [cart, setCart] = useState(() => {
@@ -6,9 +6,12 @@ const useCart = () => {
     return data ?? [];
   });
 
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   const saveCart = updatedCart => {
     try {
-      window.localStorage.setItem('cart', JSON.stringify(updatedCart));
       setCart(updatedCart);
     } catch (error) {
       throw new Error(error.message);
@@ -22,8 +25,6 @@ const useCart = () => {
 
     if (existingIndex === -1) {
       prevCart.push({ ...item, qty: 1 });
-    } else {
-      prevCart[existingIndex].qty++;
     }
 
     saveCart(prevCart);
@@ -64,7 +65,11 @@ const useCart = () => {
     saveCart(newCart);
   };
 
-  return { cart, addItem, removeItem, addQty, decreaseQty };
+  const cleanCart = () => {
+    saveCart([]);
+  };
+
+  return { cart, addItem, removeItem, addQty, decreaseQty, cleanCart };
 };
 
 export default useCart;

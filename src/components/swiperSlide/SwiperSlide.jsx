@@ -10,13 +10,14 @@ const swiperSlide = () => {
       <picture className={styles.picture}>
         <source
           srcSet={`${desktopBanner} 1x, ${desktopBanner2x} 2x`}
-          media="(min-width: 1110px)"
+          media="(min-width: 600px)"
         />
         <source
+          className={styles.img}
           srcSet={`${mobileBanner} 1x, ${mobileBanner2x} 2x`}
-          media="(max-width: 1439px)"
+          media="(max-width: 769px)"
         />
-        <img src={desktopBanner} alt="project image" />
+        <img className={styles.img} src={desktopBanner} alt="project image" />
       </picture>
     </div>
   );

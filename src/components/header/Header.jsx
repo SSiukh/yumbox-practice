@@ -12,12 +12,7 @@ const Header = ({
 }) => {
   return (
     <div className={styles.headerOverline}>
-      <div
-        className={clsx(
-          styles.container,
-          cartButtonNotVisible && styles.cartContainer
-        )}
-      >
+      <div className={styles.container}>
         <header className={styles.header}>
           <img className={styles.logo} src="/logo.svg" alt="logotype" />
           <nav>

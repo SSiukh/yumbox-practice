@@ -10,8 +10,8 @@
     .mainContent {
       display: flex;
       gap: 24px;
+      margin-right: 13px;
       .data {
-        margin-right: 13px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -36,7 +36,8 @@
       cursor: pointer;
       transition: color 250ms ease-in;
 
-      &:hover {
+      &:hover,
+      &:active {
         color: #fff;
       }
     }
@@ -82,7 +83,8 @@
         border: none;
         transition: color 250ms ease-in;
         cursor: pointer;
-        &:hover {
+        &:hover,
+        &:active {
           color: #fcb852;
         }
       }
